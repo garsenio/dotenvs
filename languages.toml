@@ -1,0 +1,78 @@
+[language-server.codebook]
+command = "codebook-lsp"
+args = ["serve"]
+
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server", "--preview"]
+
+[language-server.basedpyright]
+command = "basedpyright-langserver"
+args = ["--stdio"]
+except-features = ["format", "code-action"]
+config.basedpyright.analysis.venvPath = "."
+config.basedpyright.analysis.venv = ".venv"
+config.basedpyright.analysis.autoSearchPaths = true
+config.basedpyright.analysis.typeCheckingMode= "basic"
+config.basedpyright.analysis.diagnosticMode= "openFilesOnly"
+config.basedpyright.analysis.useLibraryCodeForTypes = true
+
+# [language-server.lsp-ai]
+# command = "lsp-ai"
+
+# [language-server.lsp-ai.config.models.model-anthropic]
+# type = "anthropic"
+# chat_endpoint = "https://api.anthropic.com/v1/messages"
+# model = "claude-3-haiku-20240307"
+# auth_token_env_var_name = 
+
+[[language]]
+name = "python"
+language-servers = ["basedpyright", "codebook", "ruff"]
+# language-servers = ["basedpyright", "codebook", "ruff", "lsp-ai"]
+# scope = "source.python"
+# injection-regex = "python"
+# file-types = ["py"]
+# shebangs = ["python"]
+# roots = ["pyproject.toml", ".venv/"]
+# comment-token = "#"
+# auto-format = false
+# indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "harper"]
+auto-format = true
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"]}
+file-types = ["md"]
+
+[[language]]
+name = "rust"
+auto-format = true
+
+roots = [
+  "Cargo.toml",
+  "Cargo.lock"
+]
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+inlayHints.bindingModeHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false

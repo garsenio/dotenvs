@@ -1,0 +1,35 @@
+theme = "catppuccin_frappe"
+
+[keys.normal]
+d = "delete_selection_noyank"
+c = "change_selection_noyank"
+
+[keys.select]
+d = "delete_selection_noyank"
+c = "change_selection_noyank"
+
+[keys.normal.space.q]
+q = ":sh wezterm cli spawn --new-window -- bash ~/.config/helix/yazi-picker.sh open $WEZTERM_PANE"
+v = ":sh wezterm cli split-pane --right -- bash ~/.config/helix/yazi-picker.sh vsplit $WEZTERM_PANE"
+# s = ":sh wezterm cli split-pane --bottom -- bash ~/.config/helix/yazi-picker.sh hsplit $WEZTERM_PANE"
+
+[editor]
+color-modes = true
+cursorline = true
+lsp.display-inlay-hints = true
+line-number = "relative"
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "file-modification-indicator", "read-only-indicator"]
+
+[editor.soft-wrap]
+enable = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.file-picker]
+hidden = false
