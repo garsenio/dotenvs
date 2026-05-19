@@ -45,7 +45,7 @@ language-servers = ["basedpyright", "codebook", "ruff"]
 
 [[language]]
 name = "markdown"
-language-servers = ["marksman", "harper"]
+language-servers = ["marksman", "harper-ls"]
 auto-format = true
 formatter = { command = "dprint", args = ["fmt", "--stdin", "md"]}
 file-types = ["md"]
